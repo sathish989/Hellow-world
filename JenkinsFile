@@ -17,14 +17,14 @@ pipeline {
         stage('Compile Java') {
             steps {
                 // Run the Java compiler (javac) on the source file.
-                sh 'javac HelloWorld.java'
+                sh 'javac Helloworld.java'
             }
         }
 
         stage('Execute Java Program') {
             steps {
-                // Run the compiled class file (HelloWorld.class).
-                sh 'java HelloWorld'
+                // Run the compiled class file (Helloworld.class).
+                sh 'java Helloworld'
             }
         }
     }
