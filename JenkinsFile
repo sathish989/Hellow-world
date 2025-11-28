@@ -30,6 +30,7 @@ pipeline {
         always {
             // Optional: Clean up the workspace after the build to save space.
             // cleanWs()
+            echo 'Post-build step running (nothing to clean up).'
         }
         success {
             echo 'Pipeline executed successfully!'
