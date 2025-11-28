@@ -1,0 +1,41 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Assuming the Jenkins job configuration already handles the Git checkout.
+                // If not, use: git url: 'your-repository-url', branch: 'main'
+                echo 'Code successfully checked out into workspace.'
+            }
+        }
+
+        stage('Compile Java') {
+            steps {
+                // Run the Java compiler (javac) on the source file.
+                sh 'javac HelloWorld.java'
+            }
+        }
+
+        stage('Execute Java Program') {
+            steps {
+                // Run the compiled class file (HelloWorld.class).
+                sh 'java HelloWorld'
+            }
+        }
+    }
+    
+    post {
+        // This section runs after the build finishes, regardless of success or failure.
+        always {
+            // Optional: Clean up the workspace after the build to save space.
+            // cleanWs()
+        }
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check the logs for details.'
+        }
+    }
+}
